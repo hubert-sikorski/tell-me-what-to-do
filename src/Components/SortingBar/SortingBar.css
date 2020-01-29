@@ -1,0 +1,65 @@
+.SortingBar {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border: 10px solid lightgray;
+    border-bottom: none;
+    margin: auto;
+    color: white;
+    background-color: black;
+}
+
+.TaskNameSort {
+    width: 500px;
+    text-align: left;
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
+.PrioritySort {
+    width: 70px;
+    text-align: left;
+    margin-left: .1rem;
+    cursor: pointer;
+}
+
+.DoneSort {
+    width: 40px;
+    text-align: center;
+    margin-right: .7rem;
+    cursor: pointer;
+}
+
+.FillerDiv {
+    visibility: hidden;
+}
+
+@media only screen and (max-width: 1299px) {
+    .SortingBar {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem 0;
+        border: none;
+        margin: auto;
+        color: white;
+        background-color: black;
+    }
+
+    .TaskNameSort {
+        width: 5rem;
+        text-align: left;
+    }
+
+    .PrioritySort {
+        width: 4rem;
+        text-align: left;
+        margin-left: 3.5rem;
+    }
+
+    .DoneSort {
+        width: 3rem;
+        text-align: center;
+    }
+}

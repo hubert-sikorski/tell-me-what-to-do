@@ -1,0 +1,42 @@
+.NavigationBar {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem 0;
+    border: 10px solid lightgray;
+    border-top: none;
+    margin: auto;
+    background-color: white;
+    color: black;
+}
+
+.RowCount {
+    width: 150px;
+    justify-content: space-around;
+}
+
+.ResultNumber {
+    width: 150px;
+    margin-left: 1rem;
+    justify-content: space-between;
+}
+
+.NavigationArrows {
+    width: 50px;
+    display: flex;
+    justify-content: space-around;
+    margin-right: 1rem;
+}
+
+@media only screen and (max-width: 1299px) {
+    .NavigationBar {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        padding: 1rem 0;
+        border: none;
+        margin: auto;
+        background-color: white;
+        color: black;
+    }
+}

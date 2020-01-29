@@ -1,0 +1,155 @@
+.Task {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.78rem;
+    border: 1px solid black;
+    color: white;
+}
+
+.TaskName {
+    width: 500px;
+    text-align: left;
+}
+
+.Priority {
+    width: 70px;
+    text-align: left;
+}
+
+.TaskStatus {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+}
+
+.TaskStatus input {
+    position: absolute;
+    opacity: 0;
+}
+
+.DeleteTask {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    text-align: right;
+}
+
+.Checkbox {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+.Checkbox::after {
+    position: absolute;
+    content: '';
+    left: 12px;
+    top: 12px;
+    height: 0px;
+    width: 0px;
+    border-radius: 5px;
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(0deg) scale(0);
+    -ms-transform: rotate(0deg) scale(0);
+    transform: rotate(0deg) scale(0);
+    opacity: 1;
+}
+
+input:checked ~ .Checkbox {
+    background-color: white;
+    border-radius: 5px;
+    -webkit-transform: rotate(0deg) scale(1);
+    -ms-transform: rotate(0deg) scale(1);
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+    border: 2px solid white;
+}
+
+input:checked ~ .Checkbox::after {
+    -webkit-transform: rotate(45deg) scale(1);
+    -ms-transform: rotate(45deg) scale(1);
+    transform: rotate(45deg) scale(1);
+    opacity: 1;
+    left: 6.5px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    background-color: transparent;
+    border-radius: 0;
+}
+
+.Checkbox::before {
+    position: absolute;
+    content: '';
+    left: 10px;
+    top: 10px;
+    width: 0px;
+    height: 0px;
+    border-radius: 5px;
+    border: 2px solid white;
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+}
+
+input:checked ~ .Checkbox::before {
+    left: -3px;
+    top: -3px;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    -webkit-transform: scale(3);
+    -ms-transform: scale(3);
+    transform: scale(3);
+    opacity: 0;
+    z-index: 999;
+    transition: all .3s ease-out;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -ms-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+}
+
+@media only screen and (max-width: 1299px) {
+    .Task {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+        border: 1px solid black;
+        color: white;
+    }
+
+    .TaskName {
+        max-width: 8rem;
+        overflow: hidden;
+        text-align: left;
+    }
+
+    .Priority {
+        width: 4rem;
+        text-align: left;
+    }
+
+    .TaskStatus {
+        width: 1rem;
+        height: 1rem;
+        text-align: center;
+    }
+
+    .DeleteTask {
+        width: 1rem;
+        height: 1rem;
+        cursor: pointer;
+        text-align: right;
+    }
+}
