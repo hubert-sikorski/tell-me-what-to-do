@@ -10,22 +10,27 @@
     color: black;
 }
 
-.RowCount {
+.RowsToDisplay {
     width: 150px;
     justify-content: space-around;
 }
 
-.ResultNumber {
-    width: 150px;
+.Indicator {
+    width: 20px;
+    cursor: pointer;
+}
+
+.ResultsNumber {
+    width: 100px;
     margin-left: 1rem;
     justify-content: space-between;
 }
 
-.NavigationArrows {
-    width: 50px;
+.NavigationArrowLeft, .NavigationArrowRight {
+    width: 20px;
     display: flex;
-    justify-content: space-around;
     margin-right: 1rem;
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 1299px) {

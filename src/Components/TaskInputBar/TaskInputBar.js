@@ -8,16 +8,11 @@ class TaskInputBar extends React.Component {
         this.state = {
             task: '',
             priority: '',
-            completed: 0,
+            completed: 0
         };
-
-        this.putTask = this.putTask.bind(this);
-        this.handleTermChange = this.handleTermChange.bind(this);
-        this.handleOptionChange = this.handleOptionChange.bind(this);
-        this.handleEnterClick = this.handleEnterClick.bind(this);
     }
 
-    putTask() {
+    putTask = () => {
         if (this.state.task && this.state.priority) {
             this.props.enterTask(
                 this.state.task,
@@ -25,36 +20,38 @@ class TaskInputBar extends React.Component {
                 this.state.completed
             );
         }
-    }
+    };
 
-    handleTermChange(event) {
+    handleTermChange = event => {
         this.setState({
-            task: event.target.value,
+            task: event.target.value
         });
-    }
+    };
 
-    handleOptionChange(event) {
+    handleOptionChange = event => {
         event.preventDefault();
         this.setState({
-            priority: event.target.value,
+            priority: event.target.value
         });
-    }
+    };
 
-    handleEnterClick(event) {
+    handleEnterClick = event => {
         if (event.key === 'Enter') {
             this.putTask();
         }
-    }
+    };
 
     render() {
         return (
             <div className="InputBar">
                 <input
+                    label="enter task"
                     placeholder="Enter Task"
                     onChange={this.handleTermChange}
                     onKeyPress={this.handleEnterClick}
                 />
                 <select
+                    label="choose priority"
                     value={this.state.priority}
                     onChange={this.handleOptionChange}
                 >

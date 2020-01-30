@@ -6,12 +6,13 @@
     border: 10px solid lightgray;
     border-top: none;
     border-bottom: none;
+    overflow: hidden;
 }
 
 @media only screen and (max-width: 1299px) {
     .TaskList {
         width: 100%;
-        height: 400px;
+        max-height: 400px;
         background-color: purple;
         margin: auto;
         border: none;

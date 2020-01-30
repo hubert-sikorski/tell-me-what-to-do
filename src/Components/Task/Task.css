@@ -28,13 +28,6 @@
     opacity: 0;
 }
 
-.DeleteTask {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    text-align: right;
-}
-
 .Checkbox {
     position: absolute;
     top: 0px;
@@ -46,6 +39,8 @@
     border: 2px solid white;
     cursor: pointer;
 }
+
+/* Checkbox effects */
 
 .Checkbox::after {
     position: absolute;
@@ -118,6 +113,15 @@ input:checked ~ .Checkbox::before {
     -moz-transition: all .3s ease-out;
     -ms-transition: all .3s ease-out;
     -o-transition: all .3s ease-out;
+}
+
+/* Checkbox Effects end */
+
+.DeleteTask {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    text-align: right;
 }
 
 @media only screen and (max-width: 1299px) {

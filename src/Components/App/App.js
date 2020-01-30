@@ -17,173 +17,66 @@ class App extends React.Component {
                 [
                     'Meet up with my absolutely gorgeous friends whom i love',
                     'Medium',
-                    0,
+                    0
                 ],
+                ['Make some tea', 'Low', 0],
+                ['Let the dogs out', 'High', 0],
+                ['Buy some new stuff', 'Low', 0],
+                ['Pass the interview', 'High', 0],
+                ['Ask mom for money', 'Medium', 0],
+                [
+                    'Finish this app and make sure it meets all the requirements, especially logic and RWD',
+                    'High',
+                    0
+                ]
             ],
-            isSortedByName: '',
-            isSortedByPriority: '',
-            isSortedByCompleted: '',
+            totalTasks: 11
         };
-
-        this.enterTask = this.enterTask.bind(this);
-        this.completeTask = this.completeTask.bind(this);
-        this.removeTask = this.removeTask.bind(this);
-        this.sortStringAscending = this.sortStringAscending.bind(this);
-        this.sortStringDescending = this.sortStringDescending.bind(this);
-        this.shiftType = this.shiftType.bind(this);
-        this.sortNumberAscending = this.sortNumberAscending.bind(this);
-        this.sortNumberDescending = this.sortNumberDescending.bind(this);
     }
 
-    enterTask(...task) {
+    enterTask = (...task) => {
         let tasks = this.state.taskList;
+        let totalTasks = this.state.totalTasks;
         tasks.push(task);
 
         this.setState({
             taskList: tasks,
+            totalTasks: totalTasks + 1
         });
-    }
+    };
 
-    completeTask(task) {
+    completeTask = task => {
         let tasks = this.state.taskList;
-        tasks = tasks.map(currentTask => {
-            if (currentTask === task) {
-                return (currentTask[2] = 1);
-            }
-            console.log(currentTask);
-            return currentTask;
-        });
-
+        if (task[2] === 1) {
+            tasks = tasks.map(currentTask => {
+                if (currentTask === task) {
+                    task[2] = 0;
+                }
+                return currentTask;
+            });
+        } else {
+            tasks = tasks.map(currentTask => {
+                if (currentTask === task) {
+                    task[2] = 1;
+                }
+                return currentTask;
+            });
+        }
         this.setState({
-            taskList: tasks,
+            taskList: tasks
         });
-    }
+    };
 
-    removeTask(task) {
+    removeTask = task => {
         let tasks = this.state.taskList;
+        let totalTasks = this.state.totalTasks;
         tasks = tasks.filter(currentTask => currentTask !== task);
 
         this.setState({
             taskList: tasks,
+            totalTasks: totalTasks - 1
         });
-    }
-
-    sortStringAscending(array) {
-        array.sort((a, b) => {
-            if (a[0].toLowerCase() < b[0].toLowerCase()) return -1;
-            if (a[0].toLowerCase() > b[0].toLowerCase()) return 1;
-            return 0;
-        });
-    }
-
-    sortStringDescending(array) {
-        array.sort((a, b) => {
-            if (a[0].toLowerCase() < b[0].toLowerCase()) return 1;
-            if (a[0].toLowerCase() > b[0].toLowerCase()) return -1;
-            return 0;
-        });
-    }
-
-    shiftType(array) {
-        if (typeof array[0][1] === 'string') {
-            array.map(task => {
-                if (task[1] === 'Low') {
-                    task[1] = 1;
-                } else if (task[1] === 'Medium') {
-                    task[1] = 2;
-                } else if (task[1] === 'High') {
-                    task[1] = 3;
-                }
-                return task;
-            });
-        } else if (typeof array[0][1] === 'number') {
-            array.map(task => {
-                if (task[1] === 1) {
-                    task[1] = 'Low';
-                } else if (task[1] === 2) {
-                    task[1] = 'Medium';
-                } else if (task[1] === 3) {
-                    task[1] = 'High';
-                }
-                return task;
-            });
-        }
-        return array;
-    }
-
-    sortNumberAscending(array, element) {
-        this.shiftType(array);
-        array.sort((a, b) => {
-            if (a[element] < b[element]) return -1;
-            if (a[element] > b[element]) return 1;
-            return 0;
-        });
-        this.shiftType(array);
-    }
-
-    sortNumberDescending(array, element) {
-        this.shiftType(array);
-        array.sort((a, b) => {
-            if (a[element] < b[element]) return 1;
-            if (a[element] > b[element]) return -1;
-            return 0;
-        });
-        this.shiftType(array);
-    }
-
-    sort(event) {
-        let tasks = this.state.taskList;
-        if (event.target.value === 'TaskNameSort') {
-            let isSorted = this.state.isSortedByName;
-            if (!isSorted || isSorted === 'descending') {
-                this.sortStringAscending(tasks);
-                this.setState({
-                    taskList: tasks,
-                    isSortedByName: 'ascending',
-                });
-            } else if (isSorted === 'ascending') {
-                this.sortStringDescending(tasks);
-                this.setState({
-                    taskList: tasks,
-                    isSortedByName: 'descending',
-                });
-            }
-        }
-
-        if (event.target.value === 'PrioritySort') {
-            let isSorted = this.state.isSortedByPriority;
-            if (!isSorted || isSorted === 'descending') {
-                this.sortNumberAscending(tasks, 1);
-                this.setState({
-                    taskList: tasks,
-                    isSortedByPriority: 'ascending',
-                });
-            } else if (isSorted === 'ascending') {
-                this.sortNumberDescending(tasks, 1);
-                this.setState({
-                    taskList: tasks,
-                    isSortedByPriority: 'descending',
-                });
-            }
-        }
-
-        if (event.target.value === 'DoneSort') {
-            let isSorted = this.state.isSortedByCompleted;
-            if (!isSorted || isSorted === 'descending') {
-                this.sortNumberAscending(tasks, 2);
-                this.setState({
-                    taskList: tasks,
-                    isSortedByCompleted: 'ascending',
-                });
-            } else if (isSorted === 'ascending') {
-                this.sortNumberDescending(tasks, 2);
-                this.setState({
-                    taskList: tasks,
-                    isSortedByCompleted: 'descending',
-                });
-            }
-        }
-    }
+    };
 
     render() {
         return (
@@ -194,12 +87,9 @@ class App extends React.Component {
                     <div className="List">
                         <TaskList
                             taskList={this.state.taskList}
+                            totalTasks={this.state.totalTasks}
                             completeTask={this.completeTask}
                             onRemove={this.removeTask}
-                            sort={this.sort}
-                            isSortedByName={this.state.isSortedByName}
-                            isSortedByPriority={this.state.isSortedByPriority}
-                            isSortedByCompleted={this.state.isSortedByCompleted}
                         />
                     </div>
                 </div>

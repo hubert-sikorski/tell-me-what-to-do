@@ -6,38 +6,37 @@ class Task extends React.Component {
         super(props);
 
         this.state = {
-            isShown: false,
+            isShown: false
         };
-
-        this.renderDeleteButton = this.renderDeleteButton.bind(this);
-        this.showDeleteButton = this.showDeleteButton.bind(this);
-        this.hideDeleteButton = this.hideDeleteButton.bind(this);
-        this.removeTask = this.removeTask.bind(this);
     }
 
-    renderDeleteButton() {
+    renderDeleteButton = () => {
         if (this.state.isShown) {
             return <i className="fa fa-trash" onClick={this.removeTask}></i>;
         }
-    }
+    };
 
-    showDeleteButton() {
+    showDeleteButton = () => {
         this.setState({
-            isShown: true,
+            isShown: true
         });
-    }
+    };
 
-    hideDeleteButton() {
+    hideDeleteButton = () => {
         this.setState({
-            isShown: false,
+            isShown: false
         });
-    }
+    };
 
-    removeTask() {
+    completeTask = () => {
+        this.props.completeTask(this.props.task);
+    };
+
+    removeTask = () => {
         if (this.props.isRemoval) {
             this.props.onRemove(this.props.task);
         }
-    }
+    };
 
     render() {
         return (
@@ -49,11 +48,13 @@ class Task extends React.Component {
                 <div className="TaskName">{this.props.taskName}</div>
                 <div className="Priority">{this.props.priority}</div>
                 <label className="TaskStatus">
-                    <input type="checkbox" />
-                    <span
-                        className="Checkbox"
-                        onClick={this.props.completeTask}
-                    ></span>
+                    <input
+                        label="checkbox"
+                        type="checkbox"
+                        onChange={this.completeTask}
+                        checked={this.props.completed}
+                    />
+                    <span className="Checkbox"></span>
                 </label>
                 <div className="DeleteTask">{this.renderDeleteButton()}</div>
             </div>
