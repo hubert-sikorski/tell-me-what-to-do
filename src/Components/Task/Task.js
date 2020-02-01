@@ -12,7 +12,7 @@ class Task extends React.Component {
 
     renderDeleteButton = () => {
         if (this.state.isShown) {
-            return <i className="fa fa-trash" onClick={this.removeTask}></i>;
+            return <i className="fa fa-trash"></i>;
         }
     };
 
@@ -56,7 +56,15 @@ class Task extends React.Component {
                     />
                     <span className="Checkbox"></span>
                 </label>
-                <div className="DeleteTask">{this.renderDeleteButton()}</div>
+                <div
+                    className="DeleteTask"
+                    onClick={() => {
+                        this.removeTask();
+                        this.props.updateStorage();
+                    }}
+                >
+                    {this.renderDeleteButton()}
+                </div>
             </div>
         );
     }

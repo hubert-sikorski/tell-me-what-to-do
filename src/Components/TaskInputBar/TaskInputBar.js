@@ -8,7 +8,8 @@ class TaskInputBar extends React.Component {
         this.state = {
             task: '',
             priority: '',
-            completed: 0
+            completed: 0,
+            warning: 'none'
         };
     }
 
@@ -19,19 +20,26 @@ class TaskInputBar extends React.Component {
                 this.state.priority,
                 this.state.completed
             );
+            this.props.saveToStorage();
+        } else if (!this.state.task || !this.state.priority) {
+            this.setState({
+                warning: 'flex'
+            });
         }
     };
 
     handleTermChange = event => {
         this.setState({
-            task: event.target.value
+            task: event.target.value,
+            warning: 'none'
         });
     };
 
     handleOptionChange = event => {
         event.preventDefault();
         this.setState({
-            priority: event.target.value
+            priority: event.target.value,
+            warning: 'none'
         });
     };
 
@@ -60,6 +68,12 @@ class TaskInputBar extends React.Component {
                     <option value="Medium">Medium</option>
                     <option value="High">High</option>
                 </select>
+                <div
+                    className="Warning"
+                    style={{ display: this.state.warning }}
+                >
+                    You must provide valid task and priority!
+                </div>
                 <button className="AddButton" onClick={this.putTask}>
                     Add
                 </button>

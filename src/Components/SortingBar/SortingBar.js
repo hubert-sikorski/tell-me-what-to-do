@@ -16,8 +16,7 @@ class SortingBar extends React.Component {
             this.state.sortType === 'name'
         ) {
             return <i className="fa fa-caret-up"></i>;
-        }
-        if (
+        } else if (
             this.props.sorted === 'descending' &&
             this.state.sortType === 'name'
         ) {
@@ -31,22 +30,21 @@ class SortingBar extends React.Component {
             this.state.sortType === 'priority'
         ) {
             return <i className="fa fa-caret-up"></i>;
-        }
-        if (
+        } else if (
             this.props.sorted === 'descending' &&
             this.state.sortType === 'priority'
         ) {
             return <i className="fa fa-caret-down"></i>;
         }
     };
+
     renderIndicatorCompleted = () => {
         if (
             this.props.sorted === 'ascending' &&
             this.state.sortType === 'completed'
         ) {
             return <i className="fa fa-caret-up"></i>;
-        }
-        if (
+        } else if (
             this.props.sorted === 'descending' &&
             this.state.sortType === 'completed'
         ) {

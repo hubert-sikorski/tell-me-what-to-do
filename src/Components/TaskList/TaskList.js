@@ -12,12 +12,15 @@ class TaskList extends React.Component {
         this.state = {
             sorted: '',
             resultsShown: 5,
+            rowsDisplayed: 5,
             tableHeight: 400,
             currentPage: 1,
-            startingIndex: 1
+            pageFirstElement: 1,
+            pageFirstElementIndex: 0
         };
     }
 
+    // Sorting functions
     sortStrings = (tasks, state) => {
         if (state === '' || state === 'descending') {
             tasks.sort((a, b) => {
@@ -94,67 +97,166 @@ class TaskList extends React.Component {
             this.shiftType(tasks);
         }
     };
+    //
 
+    // Displaying rows
     extendTableHeight = () => {
         let height = this.state.tableHeight;
-        let rows = this.state.resultsShown;
-        if (this.props.totalTasks > 5 && this.props.totalTasks < 15) {
+        let rows = this.state.rowsDisplayed;
+        let results = this.state.resultsShown;
+
+        if (this.props.totalTasks > 5) {
             this.setState({
                 tableHeight: height + 400,
-                resultsShown: rows + 5
+                rowsDisplayed: rows + 5,
+                resultsShown: results + 5
             });
         }
     };
 
     reduceTableHeight = () => {
         let height = this.state.tableHeight;
-        let rows = this.state.resultsShown;
-        if (this.props.totalTasks > 5 && this.props.totalTasks <= 15) {
+        let rows = this.state.rowsDisplayed;
+        let results = this.state.resultsShown;
+
+        if (this.props.totalTasks > 5) {
             this.setState({
                 tableHeight: height - 400,
-                resultsShown: rows - 5
+                rowsDisplayed: rows - 5,
+                resultsShown: results - 5
             });
+        }
+    };
+    //
+
+    // Switching pages
+    addPage = (resultsToAdd, pagesToAdd, incrementValue) => {
+        let results = this.state.resultsShown;
+        let page = this.state.currentPage;
+        let start = this.state.pageFirstElement;
+        let index = this.state.pageFirstElementIndex;
+
+        this.setState({
+            resultsShown: results + resultsToAdd,
+            currentPage: page + pagesToAdd,
+            pageFirstElement: start + incrementValue,
+            pageFirstElementIndex: index + incrementValue
+        });
+    };
+
+    cutPage = (resultsToCut, pagesToCut, decrementValue) => {
+        let results = this.state.resultsShown;
+        let page = this.state.currentPage;
+        let start = this.state.pageFirstElement;
+        let index = this.state.pageFirstElementIndex;
+
+        this.setState({
+            resultsShown: results - resultsToCut,
+            currentPage: page - pagesToCut,
+            pageFirstElement: start - decrementValue,
+            pageFirstElementIndex: index - decrementValue
+        });
+    };
+
+    nextPage = () => {
+        let height = this.state.tableHeight; //const
+        let rows = this.state.rowsDisplayed; //const
+        let results = this.state.resultsShown;
+        let index = this.state.pageFirstElementIndex;
+        let totalTasks = this.props.totalTasks;
+        let page = this.state.currentPage;
+
+        if (page !== 0) {
+            this.props.isSwitching(true);
+        }
+        if (rows === 5 && height === 400 && results < totalTasks) {
+            this.addPage(5, 1, 5);
+            this.props.switchPage(index + 5, results + 5);
+        } else if (rows === 10 && height === 800 && results < totalTasks) {
+            this.addPage(10, 1, 10);
+            this.props.switchPage(index + 10, results + 10);
+        } else if (rows === 15 && height === 1200 && results < totalTasks) {
+            this.addPage(15, 1, 15);
+            this.props.switchPage(index + 15, results + 15);
         }
     };
 
-    showNextPage = () => {
-        let tasks = this.props.taskList;
+    previousPage = () => {
+        let height = this.state.tableHeight; //const
+        let rows = this.state.rowsDisplayed; //const
+        let results = this.state.resultsShown;
+        let start = this.state.pageFirstElement;
+        let index = this.state.pageFirstElementIndex;
         let totalTasks = this.props.totalTasks;
-        let rows = this.state.resultsShown;
         let page = this.state.currentPage;
-        let startingIndex = this.state.startingIndex;
+
+        if (page === 2) {
+            this.props.isSwitching(false);
+        }
         if (
-            this.props.totalTasks >= 5 &&
-            page * rows < totalTasks &&
-            this.state.tableHeight === 400
+            rows === 5 &&
+            height === 400 &&
+            totalTasks >= start &&
+            start !== 1
         ) {
-            let nextPage = tasks.slice(4);
-            console.log(nextPage);
-            nextPage.map(task => task);
-            this.setState({
-                currentPage: page + 1,
-                startingIndex: startingIndex + 5
-            });
-            return nextPage;
+            this.cutPage(5, 1, 5);
+            this.props.switchPage(index - 5, results - 5);
+        } else if (
+            rows === 10 &&
+            height === 800 &&
+            totalTasks >= start &&
+            start !== 1
+        ) {
+            this.cutPage(10, 1, 10);
+            this.props.switchPage(index - 10, results - 10);
+        } else if (
+            rows === 15 &&
+            height === 1200 &&
+            totalTasks >= start &&
+            start !== 1
+        ) {
+            this.cutPage(15, 1, 15);
+            this.props.switchPage(index - 15, results - 15);
         }
     };
+    //
 
     renderTasks = () => {
-        let tasks = this.props.taskList.map((task, index) => {
-            return (
-                <Task
-                    task={task}
-                    key={index}
-                    taskName={task[0]}
-                    priority={task[1]}
-                    completed={task[2]}
-                    completeTask={this.props.completeTask}
-                    isRemoval={true}
-                    onRemove={this.props.onRemove}
-                />
-            );
-        });
-        return tasks;
+        if (this.props.isSwitchingPages === true) {
+            let tasks = this.props.tasksDisplayed.map((task, index) => {
+                return (
+                    <Task
+                        task={task}
+                        key={index}
+                        taskName={task[0]}
+                        priority={task[1]}
+                        completed={task[2]}
+                        completeTask={this.props.completeTask}
+                        isRemoval={true}
+                        onRemove={this.props.onRemove}
+                        updateStorage={this.props.updateStorage}
+                    />
+                )
+            })
+            return tasks;
+        } else {
+            let tasks = this.props.taskList.map((task, index) => {
+                return (
+                    <Task
+                        task={task}
+                        key={index}
+                        taskName={task[0]}
+                        priority={task[1]}
+                        completed={task[2]}
+                        completeTask={this.props.completeTask}
+                        isRemoval={true}
+                        onRemove={this.props.onRemove}
+                        updateStorage={this.props.updateStorage}
+                    />
+                );
+            });
+            return tasks;
+        }
     };
 
     render() {
@@ -174,11 +276,13 @@ class TaskList extends React.Component {
                 </div>
                 <NavigationBar
                     totalTasks={this.props.totalTasks}
+                    rowsDisplayed={this.state.rowsDisplayed}
                     resultsShown={this.state.resultsShown}
                     extendTable={this.extendTableHeight}
                     reduceTable={this.reduceTableHeight}
-                    nextPage={this.showNextPage}
-                    startingIndex={this.state.startingIndex}
+                    nextPage={this.nextPage}
+                    previousPage={this.previousPage}
+                    pageFirstElement={this.state.pageFirstElement}
                 />
             </div>
         );
