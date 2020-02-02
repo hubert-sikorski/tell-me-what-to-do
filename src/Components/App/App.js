@@ -16,10 +16,6 @@ class App extends React.Component {
         };
     }
 
-    saveToLocalStorage = () => {
-        localStorage.setItem('taskList', JSON.stringify(this.state));
-    };
-
     componentDidMount = () => {
         this.data = JSON.parse(localStorage.getItem('taskList'));
 
@@ -27,8 +23,8 @@ class App extends React.Component {
             this.setState({
                 taskList: this.data.taskList,
                 totalTasks: this.data.totalTasks,
-                switchingPages: this.data.switchingPages,
-                tasksDisplayed: this.data.tasksDisplayed
+                switchingPages: false,
+                tasksDisplayed: []
             });
         } else {
             this.setState({
@@ -38,6 +34,10 @@ class App extends React.Component {
                 tasksDisplayed: []
             });
         }
+    };
+
+    UNSAFE_componentWillUpdate = (nextProps, nextState) => {
+        localStorage.setItem('taskList', JSON.stringify(nextState));
     };
 
     enterTask = (...task) => {
@@ -51,7 +51,6 @@ class App extends React.Component {
             taskList: this.tasks,
             totalTasks: this.totalTasks
         });
-        this.saveToLocalStorage();
     };
 
     completeTask = task => {
@@ -81,14 +80,15 @@ class App extends React.Component {
         this.tasks = this.state.taskList;
         this.totalTasks = this.state.totalTasks;
 
-        this.tasks = this.tasks.filter(currentTask => currentTask !== task);
-        this.totalTasks -= 1;
+        if (this.state.switchingPages === false) {
+            this.tasks = this.tasks.filter(currentTask => currentTask !== task);
+            this.totalTasks -= 1;
 
-        this.setState({
-            taskList: this.tasks,
-            totalTasks: this.totalTasks
-        });
-        this.saveToLocalStorage();
+            this.setState({
+                taskList: this.tasks,
+                totalTasks: this.totalTasks
+            });
+        }
     };
 
     isSwitching = state => {
@@ -100,9 +100,11 @@ class App extends React.Component {
     switchPage = (pageStart, pageEnd) => {
         this.tasks = this.state.taskList;
         this.page = this.tasks.slice(pageStart, pageEnd);
-        console.log(this.tasks);
-        console.log(this.page);
-        if (this.state.switchingPages === true) {
+
+        if (
+            this.state.switchingPages === true ||
+            this.state.switchingPages === false
+        ) {
             this.setState({
                 tasksDisplayed: this.page
             });

@@ -26,4 +26,8 @@ This application was developed for recruitment purposes.
 
 6. Type in `npm run build` to create directory with code optimized for production.
 
-7. To preview the project in production mode in `node run watch`. If you want to see the project in development mode type in `npm start`.
+7. To preview the project in production mode in `npm run watch`. If you want to see the project in development mode type in `npm start`.
+
+8. You will get information on which server the project is running. Follow the given `Local` link.
+
+9. To exit previewing the project hold `ctrl` key with `c` key and close the project in your browser tab.

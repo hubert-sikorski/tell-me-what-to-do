@@ -126,35 +126,38 @@ input:checked ~ .Checkbox::before {
     color: indianred;
 }
 
+.DeleteTask:hover {
+    color: firebrick;
+    transition: all 0.3s ease-in;
+}
+
 @media only screen and (min-width: 576px) and (max-width: 1499px) {
     .TaskName {
         max-width: 8rem;
-        text-align: left;
+        max-height: 1.3rem;
+        overflow: hidden;
     }
 
     .Priority {
         width: 4rem;
-        text-align: left;
     }
 
     .TaskStatus {
         width: 1rem;
         height: 1rem;
-        text-align: center;
     }
 
     .DeleteTask {
         width: 1rem;
         height: 1rem;
-        cursor: pointer;
-        text-align: right;
     }
 }
 
 @media only screen and (max-width: 575px) {
     .TaskName {
         max-width: 8rem;
-        text-align: left;
+        max-height: 1.3rem;
+        overflow: hidden;
         font-style: italic;
     }
 

@@ -71,7 +71,7 @@ class TaskList extends React.Component {
     };
 
     sortNumbers = (tasks, state, element) => {
-        if (element === 1) {
+        if (element === 1 && this.props.taskList.length > 0) {
             this.shiftType(tasks);
         }
         if (state === '' || state === 'descending') {
@@ -93,7 +93,7 @@ class TaskList extends React.Component {
                 sorted: 'descending'
             });
         }
-        if (element === 1) {
+        if (element === 1 && this.props.taskList.length > 0) {
             this.shiftType(tasks);
         }
     };
@@ -105,7 +105,10 @@ class TaskList extends React.Component {
         this.rows = this.state.rowsDisplayed;
         this.results = this.state.resultsShown;
 
-        if (this.props.totalTasks > 5) {
+        if (
+            this.props.totalTasks > 5 &&
+            this.props.isSwitchingPages === false
+        ) {
             this.setState({
                 tableHeight: this.height + 400,
                 rowsDisplayed: this.rows + 5,
@@ -119,7 +122,10 @@ class TaskList extends React.Component {
         this.rows = this.state.rowsDisplayed;
         this.results = this.state.resultsShown;
 
-        if (this.props.totalTasks > 5) {
+        if (
+            this.props.totalTasks > 5 &&
+            this.props.isSwitchingPages === false
+        ) {
             this.setState({
                 tableHeight: this.height - 400,
                 rowsDisplayed: this.rows - 5,
