@@ -56,13 +56,7 @@ class Task extends React.Component {
                     />
                     <span className="Checkbox"></span>
                 </label>
-                <div
-                    className="DeleteTask"
-                    onClick={() => {
-                        this.removeTask();
-                        this.props.updateStorage();
-                    }}
-                >
+                <div className="DeleteTask" onClick={this.removeTask}>
                     {this.renderDeleteButton()}
                 </div>
             </div>

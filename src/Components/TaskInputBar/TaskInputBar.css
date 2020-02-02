@@ -7,31 +7,31 @@
 
 .InputBar input {
     width: 300px;
-    padding: .77rem;
+    padding: 0.77rem;
     font-size: 1rem;
-    margin-bottom: .2rem;
+    margin-bottom: 0.2rem;
     margin-top: 1rem;
-    border-radius: 10px;
+    border-radius: 5px;
     border: none;
 }
 
 .InputBar select {
     width: 324.6px;
-    padding: .77rem;
+    padding: 0.77rem;
     font-size: 1rem;
-    border-radius: 10px;
+    border-radius: 5px;
     border: none;
 }
 
 .Warning {
     display: none;
-    width: 300px;
+    width: 18rem;
     padding: 1rem;
     margin-top: 1rem;
-    background-color: red;
+    background-color: indianred;
     color: white;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .AddButton {
@@ -39,25 +39,25 @@
     padding: 1rem;
     width: 8rem;
     margin: 2rem;
-    background-color: blueviolet;
+    background-color: rebeccapurple;
     color: white;
     border-radius: 30px;
     border: 0px none;
     font-weight: bold;
     font-size: large;
     text-align: center;
-    transition: ease-in .2s;
+    transition: ease-in 0.2s;
 }
 
 .AddButton:hover {
     background-color: indigo;
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 768px) and (max-width: 1499px) {
     .InputBar input {
         width: 200px;
-        margin-top: .5rem;
-        margin-bottom: .3rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0.3rem;
     }
 
     .InputBar select {
@@ -66,6 +66,23 @@
 
     .Warning {
         width: 200px;
-        padding: .9rem;
+        padding: 0.9rem;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .InputBar input {
+        width: 200px;
+        margin-top: 0.5rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .InputBar select {
+        width: 224.6px;
+    }
+
+    .Warning {
+        width: 200px;
+        padding: 0.9rem;
     }
 }

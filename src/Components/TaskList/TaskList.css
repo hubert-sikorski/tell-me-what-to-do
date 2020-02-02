@@ -1,7 +1,11 @@
+.ListContainer {
+    margin-bottom: 0;
+}
+
 .TaskList {
     width: 50%;
     max-height: 400px;
-    background-color: purple;
+    background-color: white;
     margin: auto;
     border: 10px solid lightgray;
     border-top: none;
@@ -9,12 +13,15 @@
     overflow: hidden;
 }
 
-@media only screen and (max-width: 1299px) {
+@media only screen and (min-width: 768px) and (max-width: 1499px) {
+    .TaskList {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
     .TaskList {
         width: 100%;
-        max-height: 400px;
-        background-color: purple;
-        margin: auto;
         border: none;
     }
 }

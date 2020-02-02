@@ -101,29 +101,29 @@ class TaskList extends React.Component {
 
     // Displaying rows
     extendTableHeight = () => {
-        let height = this.state.tableHeight;
-        let rows = this.state.rowsDisplayed;
-        let results = this.state.resultsShown;
+        this.height = this.state.tableHeight;
+        this.rows = this.state.rowsDisplayed;
+        this.results = this.state.resultsShown;
 
         if (this.props.totalTasks > 5) {
             this.setState({
-                tableHeight: height + 400,
-                rowsDisplayed: rows + 5,
-                resultsShown: results + 5
+                tableHeight: this.height + 400,
+                rowsDisplayed: this.rows + 5,
+                resultsShown: this.results + 5
             });
         }
     };
 
     reduceTableHeight = () => {
-        let height = this.state.tableHeight;
-        let rows = this.state.rowsDisplayed;
-        let results = this.state.resultsShown;
+        this.height = this.state.tableHeight;
+        this.rows = this.state.rowsDisplayed;
+        this.results = this.state.resultsShown;
 
         if (this.props.totalTasks > 5) {
             this.setState({
-                tableHeight: height - 400,
-                rowsDisplayed: rows - 5,
-                resultsShown: results - 5
+                tableHeight: this.height - 400,
+                rowsDisplayed: this.rows - 5,
+                resultsShown: this.results - 5
             });
         }
     };
@@ -131,116 +131,111 @@ class TaskList extends React.Component {
 
     // Switching pages
     addPage = (resultsToAdd, pagesToAdd, incrementValue) => {
-        let results = this.state.resultsShown;
-        let page = this.state.currentPage;
-        let start = this.state.pageFirstElement;
-        let index = this.state.pageFirstElementIndex;
+        this.results = this.state.resultsShown;
+        this.page = this.state.currentPage;
+        this.start = this.state.pageFirstElement;
+        this.index = this.state.pageFirstElementIndex;
 
         this.setState({
-            resultsShown: results + resultsToAdd,
-            currentPage: page + pagesToAdd,
-            pageFirstElement: start + incrementValue,
-            pageFirstElementIndex: index + incrementValue
+            resultsShown: this.results + resultsToAdd,
+            currentPage: this.page + pagesToAdd,
+            pageFirstElement: this.start + incrementValue,
+            pageFirstElementIndex: this.index + incrementValue
         });
     };
 
     cutPage = (resultsToCut, pagesToCut, decrementValue) => {
-        let results = this.state.resultsShown;
-        let page = this.state.currentPage;
-        let start = this.state.pageFirstElement;
-        let index = this.state.pageFirstElementIndex;
+        this.results = this.state.resultsShown;
+        this.page = this.state.currentPage;
+        this.start = this.state.pageFirstElement;
+        this.index = this.state.pageFirstElementIndex;
 
         this.setState({
-            resultsShown: results - resultsToCut,
-            currentPage: page - pagesToCut,
-            pageFirstElement: start - decrementValue,
-            pageFirstElementIndex: index - decrementValue
+            resultsShown: this.results - resultsToCut,
+            currentPage: this.page - pagesToCut,
+            pageFirstElement: this.start - decrementValue,
+            pageFirstElementIndex: this.index - decrementValue
         });
     };
 
     nextPage = () => {
-        let height = this.state.tableHeight; //const
-        let rows = this.state.rowsDisplayed; //const
-        let results = this.state.resultsShown;
-        let index = this.state.pageFirstElementIndex;
-        let totalTasks = this.props.totalTasks;
-        let page = this.state.currentPage;
+        this.height = this.state.tableHeight;
+        this.rows = this.state.rowsDisplayed;
+        this.results = this.state.resultsShown;
+        this.index = this.state.pageFirstElementIndex;
+        this.totalTasks = this.props.totalTasks;
+        this.page = this.state.currentPage;
 
-        if (page !== 0) {
+        if (this.page !== 0) {
             this.props.isSwitching(true);
         }
-        if (rows === 5 && height === 400 && results < totalTasks) {
+        if (
+            this.rows === 5 &&
+            this.height === 400 &&
+            this.results < this.totalTasks
+        ) {
             this.addPage(5, 1, 5);
-            this.props.switchPage(index + 5, results + 5);
-        } else if (rows === 10 && height === 800 && results < totalTasks) {
+            this.props.switchPage(this.index + 5, this.results + 5);
+        } else if (
+            this.rows === 10 &&
+            this.height === 800 &&
+            this.results < this.totalTasks
+        ) {
             this.addPage(10, 1, 10);
-            this.props.switchPage(index + 10, results + 10);
-        } else if (rows === 15 && height === 1200 && results < totalTasks) {
+            this.props.switchPage(this.index + 10, this.results + 10);
+        } else if (
+            this.rows === 15 &&
+            this.height === 1200 &&
+            this.results < this.totalTasks
+        ) {
             this.addPage(15, 1, 15);
-            this.props.switchPage(index + 15, results + 15);
+            this.props.switchPage(this.index + 15, this.results + 15);
         }
     };
 
     previousPage = () => {
-        let height = this.state.tableHeight; //const
-        let rows = this.state.rowsDisplayed; //const
-        let results = this.state.resultsShown;
-        let start = this.state.pageFirstElement;
-        let index = this.state.pageFirstElementIndex;
-        let totalTasks = this.props.totalTasks;
-        let page = this.state.currentPage;
+        this.height = this.state.tableHeight;
+        this.rows = this.state.rowsDisplayed;
+        this.results = this.state.resultsShown;
+        this.start = this.state.pageFirstElement;
+        this.index = this.state.pageFirstElementIndex;
+        this.totalTasks = this.props.totalTasks;
+        this.page = this.state.currentPage;
 
-        if (page === 2) {
+        if (this.page === 2) {
             this.props.isSwitching(false);
         }
         if (
-            rows === 5 &&
-            height === 400 &&
-            totalTasks >= start &&
-            start !== 1
+            this.rows === 5 &&
+            this.height === 400 &&
+            this.totalTasks >= this.start &&
+            this.start !== 1
         ) {
             this.cutPage(5, 1, 5);
-            this.props.switchPage(index - 5, results - 5);
+            this.props.switchPage(this.index - 5, this.results - 5);
         } else if (
-            rows === 10 &&
-            height === 800 &&
-            totalTasks >= start &&
-            start !== 1
+            this.rows === 10 &&
+            this.height === 800 &&
+            this.totalTasks >= this.start &&
+            this.start !== 1
         ) {
             this.cutPage(10, 1, 10);
-            this.props.switchPage(index - 10, results - 10);
+            this.props.switchPage(this.index - 10, this.results - 10);
         } else if (
-            rows === 15 &&
-            height === 1200 &&
-            totalTasks >= start &&
-            start !== 1
+            this.rows === 15 &&
+            this.height === 1200 &&
+            this.totalTasks >= this.start &&
+            this.start !== 1
         ) {
             this.cutPage(15, 1, 15);
-            this.props.switchPage(index - 15, results - 15);
+            this.props.switchPage(this.index - 15, this.results - 15);
         }
     };
     //
 
     renderTasks = () => {
         if (this.props.isSwitchingPages === true) {
-            let tasks = this.props.tasksDisplayed.map((task, index) => {
-                return (
-                    <Task
-                        task={task}
-                        key={index}
-                        taskName={task[0]}
-                        priority={task[1]}
-                        completed={task[2]}
-                        completeTask={this.props.completeTask}
-                        isRemoval={true}
-                        onRemove={this.props.onRemove}
-                        updateStorage={this.props.updateStorage}
-                    />
-                )
-            })
-            return tasks;
-        } else {
-            let tasks = this.props.taskList.map((task, index) => {
+            this.tasks = this.props.tasksDisplayed.map((task, index) => {
                 return (
                     <Task
                         task={task}
@@ -255,13 +250,29 @@ class TaskList extends React.Component {
                     />
                 );
             });
-            return tasks;
+            return this.tasks;
+        } else {
+            this.tasks = this.props.taskList.map((task, index) => {
+                return (
+                    <Task
+                        task={task}
+                        key={index}
+                        taskName={task[0]}
+                        priority={task[1]}
+                        completed={task[2]}
+                        completeTask={this.props.completeTask}
+                        isRemoval={true}
+                        onRemove={this.props.onRemove}
+                    />
+                );
+            });
+            return this.tasks;
         }
     };
 
     render() {
         return (
-            <div>
+            <div className="ListContainer">
                 <SortingBar
                     sortByName={this.sortStrings}
                     sortByOtherOption={this.sortNumbers}

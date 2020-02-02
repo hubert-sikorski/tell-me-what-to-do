@@ -20,7 +20,6 @@ class TaskInputBar extends React.Component {
                 this.state.priority,
                 this.state.completed
             );
-            this.props.saveToStorage();
         } else if (!this.state.task || !this.state.priority) {
             this.setState({
                 warning: 'flex'
@@ -57,11 +56,13 @@ class TaskInputBar extends React.Component {
                     placeholder="Enter Task"
                     onChange={this.handleTermChange}
                     onKeyPress={this.handleEnterClick}
+                    maxLength="60"
                 />
                 <select
                     label="choose priority"
                     value={this.state.priority}
                     onChange={this.handleOptionChange}
+                    onKeyPress={this.handleEnterClick}
                 >
                     <option value="">Choose priority</option>
                     <option value="Low">Low</option>

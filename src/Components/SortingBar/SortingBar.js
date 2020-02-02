@@ -88,7 +88,7 @@ class SortingBar extends React.Component {
                     Done
                     {this.renderIndicatorCompleted()}
                 </div>
-                <div className="FillerDiv">x</div>
+                <div className="Filler"></div>
             </div>
         );
     }

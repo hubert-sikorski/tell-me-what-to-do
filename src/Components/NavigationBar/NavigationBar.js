@@ -3,34 +3,34 @@ import './NavigationBar.css';
 
 class NavigationBar extends React.Component {
     addRows = () => {
-        let rows = this.props.rowsDisplayed;
+        this.rows = this.props.rowsDisplayed;
 
-        if (rows >= 5 && rows < 15) {
+        if (this.rows >= 5 && this.rows < 15) {
             this.props.extendTable();
         }
     };
 
     cutRows = () => {
-        let rows = this.props.rowsDisplayed;
+        this.rows = this.props.rowsDisplayed;
 
-        if (rows > 5 && rows <= 15) {
+        if (this.rows > 5 && this.rows <= 15) {
             this.props.reduceTable();
         }
     };
 
     renderIndicators = () => {
-        let rows = this.props.rowsDisplayed;
+        this.rows = this.props.rowsDisplayed;
 
-        if (rows === 5) {
+        if (this.rows === 5) {
             return (
                 <i
                     className="fa fa-caret-down Indicator"
                     onClick={this.addRows}
                 ></i>
             );
-        } else if (rows > 5 && rows < 15) {
+        } else if (this.rows > 5 && this.rows < 15) {
             return (
-                <div>
+                <div className="Indicators">
                     <i
                         className="fa fa-caret-down Indicator"
                         onClick={this.addRows}
@@ -41,7 +41,7 @@ class NavigationBar extends React.Component {
                     ></i>
                 </div>
             );
-        } else if (rows === 15) {
+        } else if (this.rows === 15) {
             return (
                 <i
                     className="fa fa-caret-up Indicator"

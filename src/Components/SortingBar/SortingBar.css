@@ -1,5 +1,6 @@
 .SortingBar {
     width: 50%;
+    height: 2.5rem;
     display: flex;
     justify-content: space-between;
     padding: 1rem 0;
@@ -13,29 +14,61 @@
 .TaskNameSort {
     width: 500px;
     text-align: left;
-    margin-left: 1rem;
+    margin-left: 1.8rem;
     cursor: pointer;
+    line-height: 250%;
 }
 
 .PrioritySort {
     width: 70px;
     text-align: left;
-    margin-left: .1rem;
+    margin-left: 3.2rem;
     cursor: pointer;
+    line-height: 250%;
 }
 
 .DoneSort {
-    width: 40px;
-    text-align: center;
-    margin-right: .7rem;
+    width: 50px;
+    text-align: left;
+    margin-right: 1.4rem;
     cursor: pointer;
+    line-height: 250%;
 }
 
-.FillerDiv {
+.Filler {
     visibility: hidden;
+    width: 0.1px;
 }
 
-@media only screen and (max-width: 1299px) {
+@media only screen and (min-width: 768px) and (max-width: 1499px) {
+    .SortingBar {
+        width: 60%;
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem 0;
+        margin: auto;
+        color: white;
+        background-color: black;
+    }
+
+    .TaskNameSort {
+        width: 6rem;
+        text-align: left;
+    }
+
+    .PrioritySort {
+        width: 4rem;
+        text-align: left;
+        margin-left: 2.3rem;
+    }
+
+    .DoneSort {
+        width: 4;
+        margin-right: 1rem;
+    }
+}
+
+@media only screen and (max-width: 767px) {
     .SortingBar {
         width: 100%;
         display: flex;
@@ -48,18 +81,47 @@
     }
 
     .TaskNameSort {
-        width: 5rem;
+        width: 6rem;
         text-align: left;
     }
 
     .PrioritySort {
         width: 4rem;
         text-align: left;
-        margin-left: 3.5rem;
+        margin-left: 3rem;
     }
 
     .DoneSort {
-        width: 3rem;
+        width: 4.5rem;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .SortingBar {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem 0;
+        border: none;
+        margin: auto;
+        color: white;
+        background-color: black;
+    }
+
+    .TaskNameSort {
+        width: 6rem;
+        text-align: left;
+    }
+
+    .PrioritySort {
+        width: 4rem;
+        text-align: left;
+        margin-left: 3rem;
+    }
+
+    .DoneSort {
+        width: 4rem;
         text-align: center;
     }
 }

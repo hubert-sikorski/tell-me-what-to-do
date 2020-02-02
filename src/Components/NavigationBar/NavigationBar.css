@@ -1,5 +1,6 @@
 .NavigationBar {
     width: 50%;
+    height: 2rem;
     display: flex;
     justify-content: flex-end;
     padding: 1rem 0;
@@ -11,29 +12,54 @@
 }
 
 .RowsToDisplay {
-    width: 150px;
-    justify-content: space-around;
+    width: 10rem;
+    justify-content: space-evenly;
+    margin-right: 2rem;
+    line-height: 200%;
 }
 
 .Indicator {
-    width: 20px;
+    width: 1.2rem;
     cursor: pointer;
+    line-height: 200%;
 }
 
 .ResultsNumber {
-    width: 100px;
+    width: 6rem;
     margin-left: 1rem;
     justify-content: space-between;
+    line-height: 200%;
 }
 
-.NavigationArrowLeft, .NavigationArrowRight {
-    width: 20px;
+.NavigationArrowLeft,
+.NavigationArrowRight {
+    width: 0.5rem;
+    height: 1rem;
     display: flex;
-    margin-right: 1rem;
+    margin-right: 1.7rem;
+    margin-top: 0.3rem;
     cursor: pointer;
+    color: rgba(0, 0, 0, 0.6);
+    padding: 0.2rem;
 }
 
-@media only screen and (max-width: 1299px) {
+.NavigationArrowLeft:hover,
+.NavigationArrowRight:hover {
+    color: orange;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1499px) {
+    .NavigationBar {
+        width: 60%;
+        display: flex;
+        justify-content: flex-end;
+        padding: 1rem 0;
+        margin: auto;
+        color: black;
+    }
+}
+
+@media only screen and (max-width: 767px) {
     .NavigationBar {
         width: 100%;
         display: flex;
@@ -41,7 +67,52 @@
         padding: 1rem 0;
         border: none;
         margin: auto;
-        background-color: white;
         color: black;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .RowsToDisplay {
+        width: 10rem;
+        justify-content: space-evenly;
+        margin-left: 0.1rem;
+        margin-right: 0.1rem;
+        line-height: 200%;
+    }
+
+    .Indicator {
+        width: 1rem;
+        cursor: pointer;
+        line-height: 200%;
+        margin-top: 0;
+    }
+
+    .Indicators {
+        justify-content: space-evenly;
+    }
+
+    .ResultsNumber {
+        width: 6rem;
+        margin-left: 1rem;
+        justify-content: space-between;
+        line-height: 200%;
+    }
+
+    .NavigationArrowLeft,
+    .NavigationArrowRight {
+        width: 0.5rem;
+        height: 1rem;
+        display: flex;
+        margin-right: 1rem;
+        margin-top: 0.3rem;
+        cursor: pointer;
+        color: rgba(0, 0, 0, 0.6);
+        padding: 0.2rem;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .Indicator {
+        line-height: 100%;
     }
 }

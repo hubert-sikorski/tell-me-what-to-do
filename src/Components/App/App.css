@@ -9,12 +9,7 @@ h1 {
     align-items: center;
     background-color: rgba(0, 0, 0, 0.9);
     margin: 0 auto;
-    padding: .5rem 0;
+    padding: 0.5rem 0;
     font-size: 2rem;
     color: white;
 }
-
-.App {
-    background-color: goldenrod
-}
-
