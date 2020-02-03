@@ -123,7 +123,7 @@ class TaskList extends React.Component {
         this.results = this.state.resultsShown;
 
         if (
-            this.props.totalTasks > 5 &&
+            this.props.totalTasks >= 0 &&
             this.props.isSwitchingPages === false
         ) {
             this.setState({
@@ -240,7 +240,7 @@ class TaskList extends React.Component {
     //
 
     renderTasks = () => {
-        if (this.props.isSwitchingPages === true) {
+        if (this.props.isSwitchingPages === true && this.props.totalTasks > 5) {
             this.tasks = this.props.tasksDisplayed.map((task, index) => {
                 return (
                     <Task

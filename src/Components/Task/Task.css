@@ -104,9 +104,9 @@ input:checked ~ .Checkbox::before {
     width: 20px;
     height: 20px;
     border-radius: 5px;
-    -webkit-transform: scale(3);
-    -ms-transform: scale(3);
-    transform: scale(3);
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    transform: scale(2);
     opacity: 0;
     z-index: 999;
     transition: all 0.3s ease-out;
@@ -123,11 +123,11 @@ input:checked ~ .Checkbox::before {
     height: 20px;
     cursor: pointer;
     text-align: right;
-    color: indianred;
+    color: gray;
 }
 
 .DeleteTask:hover {
-    color: firebrick;
+    color: indianred;
     transition: all 0.3s ease-in;
 }
 

@@ -53,7 +53,7 @@ class TaskInputBar extends React.Component {
             <div className="InputBar">
                 <input
                     label="enter task"
-                    placeholder="Enter Task"
+                    placeholder="Enter Task "
                     onChange={this.handleTermChange}
                     onKeyPress={this.handleEnterClick}
                     maxLength="60"
