@@ -7,7 +7,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     /*background-color: rgba(0, 0, 0, 1);*/
-    background-image: url('Components/App/background.png');
+    background-image: url('assets/background.png');
     background-repeat: no-repeat;
     background-size: auto;
 }
@@ -19,12 +19,12 @@ code {
 
 @media only screen and (min-width: 576px) and (max-width: 1199px) {
     body {
-        background-image: url('Components/App/background-tablet.png');
+        background-image: url('assets/background-tablet.png');
     }
 }
 
 @media only screen and (max-width: 575px) {
     body {
-        background-image: url('Components/App/background-mobile.png');
+        background-image: url('assets/background-mobile.png');
     }
 }

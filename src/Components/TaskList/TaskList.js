@@ -252,7 +252,6 @@ class TaskList extends React.Component {
                         completeTask={this.props.completeTask}
                         isRemoval={true}
                         onRemove={this.props.onRemove}
-                        updateStorage={this.props.updateStorage}
                     />
                 );
             });

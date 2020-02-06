@@ -73,7 +73,7 @@ class TaskInputBar extends React.Component {
                     className="Warning"
                     style={{ display: this.state.warning }}
                 >
-                    You must provide valid task and priority!
+                    You must provide a valid task and priority!
                 </div>
                 <button className="AddButton" onClick={this.putTask}>
                     Add
