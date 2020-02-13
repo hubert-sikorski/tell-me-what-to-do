@@ -1,8 +1,6 @@
-# To Do Assignment
+# TellmewhatToDo
 
 ![Project](/src/preview.png)
-
-This application was developed for recruitment purposes.
 
 ## Short instructions to preview the project
 

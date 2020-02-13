@@ -124,6 +124,7 @@ input:checked ~ .Checkbox::before {
     cursor: pointer;
     text-align: right;
     color: gray;
+    margin-left: .5rem;
 }
 
 .DeleteTask:hover {
@@ -131,20 +132,23 @@ input:checked ~ .Checkbox::before {
     transition: all 0.3s ease-in;
 }
 
-@media only screen and (min-width: 576px) and (max-width: 1499px) {
+@media only screen and (min-width: 576px) and (max-width: 1199px) {
     .TaskName {
-        max-width: 8rem;
+        width: 50rem;
         max-height: 1.3rem;
         overflow: hidden;
     }
 
     .Priority {
         width: 4rem;
+        margin-left: .1rem;
+        margin-right: 2rem;
     }
 
     .TaskStatus {
         width: 1rem;
         height: 1rem;
+        margin-right: 1rem;
     }
 
     .DeleteTask {
@@ -155,17 +159,18 @@ input:checked ~ .Checkbox::before {
 
 @media only screen and (max-width: 575px) {
     .TaskName {
-        max-width: 8rem;
+        width: 10rem;
         max-height: 1.3rem;
         overflow: hidden;
         font-style: italic;
     }
 
     .Priority {
-        width: 3.5rem;
+        width: 4rem;
+        margin-right: 1.4rem;
     }
 
     .TaskStatus {
-        width: 0.9rem;
+        width: 1rem;
     }
 }

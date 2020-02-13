@@ -38,25 +38,32 @@
 .Filler {
     visibility: hidden;
     width: 0.1px;
+    margin-left: .5rem;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1499px) {
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
     .SortingBar {
-        width: 60%;
+        width: 100%;
     }
 
     .TaskNameSort {
-        width: 6rem;
+        width: 44rem;
     }
 
     .PrioritySort {
-        width: 4rem;
-        margin-left: 2.3rem;
+        width: 4.5rem;
+        margin-left: 7rem;
+        margin-right: 1.5rem;
     }
 
     .DoneSort {
-        width: 4;
+        width: 4rem;
+        margin-left: .5rem;
         margin-right: 1rem;
+    }
+
+    .Filler {
+        margin-left: 1rem;
     }
 }
 
@@ -67,30 +74,34 @@
     }
 
     .TaskNameSort {
-        width: 6rem;
+        width: 44rem;
     }
 
     .PrioritySort {
         width: 4rem;
-        margin-left: 3rem;
+        margin-right: 2rem;
+        margin-left: 4rem;
     }
 
     .DoneSort {
-        width: 4.5rem;
+        width: 4rem;
         text-align: center;
+        margin-right: 1.5rem;
     }
 }
 
 @media only screen and (max-width: 575px) {
     .TaskNameSort {
         text-align: left;
+        width: 7rem;
     }
 
     .PrioritySort {
         text-align: left;
+        margin-right: 1.5rem;
     }
 
-    .DoneSort {
-        width: 4rem;
+    .Filler {
+        width: .1rem;
     }
 }
