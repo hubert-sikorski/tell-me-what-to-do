@@ -1,8 +1,11 @@
-# TellmewhatToDo
+# TellmewhatToDo App - [tellmewhattodo.surge.sh](http://tellmewhattodo.surge.sh)
 
-![Project](/src/preview.png)
+To-Do app that makes tracking daily tasks super easy. The app enables adding priority
+to each task, which significantly helps with organizing them. Tasklist provides sorting,
+view options, switching pages, marking tasks as complete, and deleting them while no longer
+needed. Tasks are being saved to Local Storage so you can come back to them any time!
 
-## Short instructions to preview the project
+## Short instructions to preview the project in local IDE
 
 1. Download the repository.
 
@@ -31,3 +34,15 @@
 8. You will get information on which server the project is running. Follow the given `Local` link.
 
 9. To exit previewing the project hold `ctrl` key with `c` key and close the project in your browser tab.
+
+## Version history
+
+- Version 1.0
+  - Core components: Input Bar, Sorting Bar, Tasklist, Navigation Bar
+  - Styling for the app and its components, including checkbox effects
+  - Logic for handling component functions like sorting or switching pages
+  - LocalStorage holding tasks
+
+- Version 1.1
+  - RWD improvements
+  - Input Bar styling fixed
