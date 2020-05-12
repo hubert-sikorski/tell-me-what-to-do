@@ -1,4 +1,4 @@
-# TellmewhatToDo App - [tellmewhattodo.surge.sh](http://tellmewhattodo.surge.sh)
+# Tell Me What To Do App - [tellmewhattodo.surge.sh](http://tellmewhattodo.surge.sh)
 
 To-Do app that makes tracking daily tasks super easy. The app enables adding priority
 to each task, which significantly helps with organizing them. Tasklist provides sorting,
